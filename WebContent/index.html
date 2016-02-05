@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyAppModule" ng-controller="mainController" ng-init="hide='true'">
+<head>
+<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="http://getbootstrap.com/assets/css/docs.min.css"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/angular.min.js"></script> -->
+	
+	<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+  	<!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+  	
+	<!-- <script src="js/angular.min.js"> -->
+	<script src="js/ui-bootstrap-tpls-1.1.1.min.js"></script>
+	<script src="js/MyAppModule.js"></script>
+<title>Pruebas Angular</title>
+</head>
+<body>
+<div class="container">
+	<br><strong>{{saludo}}</strong><br>
+	<br>
+	<div ng-hide="hide" class="alert alert-{{classAlert}} alert-dismissible" role="alert">
+	  <button ng-click="ocultar()" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	  <!-- <a ng-href="ocultar()"  href="#" class="close" aria-label="close">&times;</a> -->
+	  <strong>{{titleMessage}}! </strong>{{message}}
+	</div>
+	
+	<div class="form-group">
+		<div class="col-md-5">
+			<input type="text" ng-model="search" class="form-control">
+	 	</div>
+	 	<input type="button" class="btn btn-default" value="Buscar Usuarios " ng-click="obtenerUsuarios()">
+	</div>
+	
+	<div class="form-group">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Accion</th>
+				</tr>
+			</thead>
+			<tr  ng-repeat="user in users | filter:search" >
+				<td>{{$index + 1}}</td>
+				<td>{{user.name}}</td>
+				<td>{{user.lastName}}</td>
+				<td>
+					<input type="button" ng-click="editar(user)" class="btn btn-warning" value="Editar"/>
+					<input type="button" ng-click="eliminar(user)" class="btn btn-danger" value="Eliminar"/>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<button type="button" class="btn btn-primary" ng-click="agregar()">Add User!</button>
+</div>
+
+<!-- 	<button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+	
+	<br>Message: {{ text }}
+	<br>Parametro 1: {{ param1 }}
+	<br>Parametro 2: {{ param2 }}
+	
+	<br>Name: {{ name }}
+	<br>Last Name: {{ familyName }}
+	
+	<br>Factory: {{ factory }}
+	<br>Provider: {{ provider }}
+	<br>Service: {{ service }}
+	<br>Service.saludar: {{ service.saludar }} -->
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyAppModule" ng-controller="mainController">
+<head>
+<meta charset="UTF-8">
+<!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<title>New User Form</title>
+</head>
+<body>
+<form>
+	<div class="modal-header" ng-init="hide='true'">
+		<h3 class="modal-title">{{title}}</h3>
+	</div>
+	<div class="modal-body">
+		<div class="form-group">
+			<div ng-hide="hide" class="alert alert-{{classAlert}} alert-dismissible" role="alert">
+			  <strong>{{titleMessage}}!</strong>
+			  <button ng-click="ocultar()" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <ul>
+			  		<li ng-repeat="message in messages"> {{message.message}}</li>
+			  </ul>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="name">Name:</label>
+			<input type="text" id="name" ng-model="name" class="form-control" placeholder="User Name" ng-disabled="disabled"/>
+		</div>
+		<div class="form-group">	
+			<label for="lastName">Last Name:</label>
+			<input type="text" id="lastName" ng-model="lastName" class="form-control" placeholder="Last Name">
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	</div>
+</form>
+</body>
+</html>
